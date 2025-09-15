@@ -1,0 +1,42 @@
+import destino.*
+import mensajeros.*
+import empresa.*
+
+describe "mensajeros" {
+  test "Que roberto (90kg) puede llevar un paquete que está pago en un camión que tiene un acoplado." {
+    roberto.peso(90)
+    roberto.transporte(camion)
+    roberto.transporte.agregarAcoplado()
+    roberto.pesoTotal()
+    assert.that(puenteBrooklyn.puedePasar(roberto))
+  }
+  test "Que neo con crédito no puede llevar un paquete que no está pago a la matrix." {
+    neo.tieneCredito(false)
+    assert.notThat(laMatrix.puedePasar(neo))
+  }
+}
+
+describe "empresaDeMensajeria" {
+  test "Contratar a un mensajero" {
+    empresa.despedirATodos()
+    empresa.contratar(neo)
+    assert.equals(1, empresa.empleados().size())
+  }
+  test "Despedir a un mensajero" {
+    empresa.despedirATodos()
+    empresa.contratar(neo)
+    empresa.despedir(neo)
+    assert.equals(0, empresa.empleados().size())
+  }
+  test "Despedir a todos los mensajeros" {
+    empresa.despedirATodos()
+    assert.equals(0, empresa.empleados().size())
+  }
+  test "La mensajeria es grande" {
+    empresa.despedirATodos()
+    empresa.contratar(neo)
+    empresa.contratar(chuckNorris)
+    empresa.contratar(roberto)
+    assert.equals(true, empresa.esMensajeriaGrande())
+  }
+}
