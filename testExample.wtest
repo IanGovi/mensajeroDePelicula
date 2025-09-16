@@ -20,7 +20,7 @@ describe "empresaDeMensajeria" {
   test "Contratar a un mensajero" {
     empresa.despedirATodos()
     empresa.contratar(neo)
-    assert.equals(1, empresa.empleados().size())
+    assert.that(empresa.empleados().contains(neo))
   }
   test "Despedir a un mensajero" {
     empresa.despedirATodos()
@@ -30,13 +30,13 @@ describe "empresaDeMensajeria" {
   }
   test "Despedir a todos los mensajeros" {
     empresa.despedirATodos()
-    assert.equals(0, empresa.empleados().size())
+    assert.that(empresa.empleados().isEmpty())
   }
   test "La mensajeria es grande" {
     empresa.despedirATodos()
     empresa.contratar(neo)
     empresa.contratar(chuckNorris)
     empresa.contratar(roberto)
-    assert.equals(true, empresa.esMensajeriaGrande())
+    assert.that(empresa.esMensajeriaGrande())
   }
 }

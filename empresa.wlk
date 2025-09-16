@@ -1,10 +1,10 @@
 object empresa{
 const property empleados = #{}
 
-method contratar(mensajero) = empleados.add(mensajero)
-method despedir(mensajero) = empleados.remove(mensajero)
-method despedirATodos() = empleados.clear()
+method contratar(mensajero) {empleados.add(mensajero)} 
+method despedir(mensajero) {empleados.remove(mensajero)}
+method despedirATodos() {empleados.clear()}
 method esMensajeriaGrande() = empleados.size() > 2
 method entregadoPorPrimerEmpleado(paquete) = paquete.puedeSerEntregado(empleados.asList().first())
-method pesoDelultimoEmpleado() = empleados.asList().last().peso()
+method pesoDelUltimoEmpleado() = empleados.asList().last().peso()
 }
